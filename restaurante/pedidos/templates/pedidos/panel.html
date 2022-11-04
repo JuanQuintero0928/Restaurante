@@ -1,0 +1,31 @@
+{% extends 'pedidos/base.html' %}
+{%block content%}
+    <div class="row">
+        {% for mesa in mesas%}
+
+            <div class="border bg-light m-1" style="width: 300px;height: 200px;">
+                {% if mesa.estado == True %}
+                    <div class="bg-danger text-white text-center fw-bold">
+                        <p>Mesa {{mesa.numero}}</p> 
+                    </div>
+                    <p>Capacidad: {{mesa.capacidad}}</p>
+                    {% for pedido in pedidos %}
+                        {% if pedido.mesa_id == mesa.id and pedido.estado == True %}
+                            <p>Numero Pedido :         
+                            <a href="{% url 'pedidos:verpedido' pedido.id %}">{{ pedido.id }}</p></a>
+                        {%endif%}    
+                    {%endfor%}
+                    <a href="{% url 'pedidos:pedidos' mesa.id %}">Agregar mas productos</a>
+                {%else%}
+                    <div class="bg-success text-white text-center fw-bold">
+                        <p>Mesa {{mesa.numero}}</p>
+                    </div>
+                    <p>Capacidad: {{mesa.capacidad}}</p> 
+                    <a href="{% url 'pedidos:pedidos' mesa.id %}">Pedido Nuevo</a>
+                {%endif%}
+                
+            </div>
+        {%endfor%}
+    </div>
+        
+{%endblock%}

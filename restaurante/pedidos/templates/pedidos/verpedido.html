@@ -1,0 +1,40 @@
+{% extends 'pedidos/base.html' %}
+{%block content%}
+    <div class="row">
+        <div class="col-sm-6 shadow p-4 border rounded-3 mx-auto">
+            <div class="col-md-6 mx-auto">
+                <h1>Ver Pedido</h1>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Productos</h3>
+                </div>
+                <div class="col-md-3">
+                    <h3>Cantidad</h3>
+                </div>
+                <div class="col-md-5">
+                    <h3>Observacion</h3>
+                </div>
+            </div>
+            {% for pedido in verped %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ pedido.producto }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ pedido.cantidad }}
+                        </div>
+                        <div class="col-md-5">
+                            {{ pedido.observacion }}
+                        </div>
+                    </div>
+            {% endfor %}
+            <br>
+            <div class="col-md-4  mx-auto">
+                <a href="/panel" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
+        
+{%endblock%}

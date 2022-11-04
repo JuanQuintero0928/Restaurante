@@ -1,0 +1,65 @@
+{% extends 'pedidos/base.html' %}
+{%block content%}
+
+{% for message in messages%}
+    {% if message.tags == 'info'%}
+    <div class="alert alert-success d-flex align-items-center fade show" role="alert">
+        <strong></strong>{{ message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif%}
+{% endfor %}
+    <div class="row">
+        <div class="col-sm-4 shadow p-4 border rounded-3 mx-auto">
+            <div class="col-md-6 mx-auto">
+                <h1>Pedidos</h1>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="col-md-12">
+                            Producto
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            {{ formpedido.producto}}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-5">
+                        <div class="col-md-12">
+                            Cantidad
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            {{ formpedido.cantidad}}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-5">
+                        <div class="col-md-12">
+                            Observacion
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            {{ formpedido.observacion}}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="/panel" class="btn btn-primary">Terminar Pedido</a>
+                </div>
+            </form>
+        </div>
+    </div>
+        
+{%endblock%}
